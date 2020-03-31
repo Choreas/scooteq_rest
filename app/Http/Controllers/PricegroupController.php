@@ -14,7 +14,7 @@ class PricegroupController extends Controller
      */
     public function index()
     {
-        //
+        return Pricegroup::all();
     }
 
     /**
@@ -36,7 +36,7 @@ class PricegroupController extends Controller
      */
     public function show(Pricegroup $pricegroup)
     {
-        //
+        return $pricegroup;
     }
 
     /**

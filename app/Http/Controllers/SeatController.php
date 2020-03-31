@@ -14,7 +14,7 @@ class SeatController extends Controller
      */
     public function index()
     {
-        //
+        return Seat::all();
     }
 
     /**
@@ -36,7 +36,7 @@ class SeatController extends Controller
      */
     public function show(Seat $seat)
     {
-        //
+        return $seat;
     }
 
     /**

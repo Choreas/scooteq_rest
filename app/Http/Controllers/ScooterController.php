@@ -14,7 +14,7 @@ class ScooterController extends Controller
      */
     public function index()
     {
-        //
+        return Scooter::all();
     }
 
     /**
@@ -36,7 +36,7 @@ class ScooterController extends Controller
      */
     public function show(Scooter $scooter)
     {
-        //
+        return $scooter;
     }
 
     /**

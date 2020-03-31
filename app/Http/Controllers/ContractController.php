@@ -14,7 +14,7 @@ class ContractController extends Controller
      */
     public function index()
     {
-        //
+        return Contract::all();
     }
 
     /**
@@ -36,7 +36,7 @@ class ContractController extends Controller
      */
     public function show(Contract $contract)
     {
-        //
+        return $contract;
     }
 
     /**

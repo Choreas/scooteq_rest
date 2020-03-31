@@ -14,7 +14,7 @@ class SpeedController extends Controller
      */
     public function index()
     {
-        //
+        return Speed::all();
     }
 
     /**
@@ -36,7 +36,7 @@ class SpeedController extends Controller
      */
     public function show(Speed $speed)
     {
-        //
+        return $speed;
     }
 
     /**
