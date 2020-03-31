@@ -18,5 +18,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::apiResources([
-    'User' => 'UserController',
+    'battery' => 'BatteryController',
+    'contract' => 'ContractController',
+    'country' => 'CountryController',
+    'customer' => 'CustomerController',
+    'location' => 'LocationController',
+    'pricegroup' => 'PricegroupController',
+    'scooter' => 'ScooterController',
+    'scooterlocation' => 'ScooterLocationController',
+    'seat' => 'SeatController',
+    'speed' => 'SpeedController',
 ]);
