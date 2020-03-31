@@ -1,1 +1,2 @@
-If port 3306 for db unavailable, you should look if there is an sql server running on your machine and stop it.
+If port 3306 for db unavailable, you should look if 
+there is an sql server running on your machine and stop it.
