@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "choreas/scooteq_rest",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Backend for scooteq API.",
     "keywords": [
         "framework",
         "laravel"
