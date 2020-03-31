@@ -1,17 +1,27 @@
 # docker-compose.yml #
 version: "3.4"
 services:
+  composer:
+    image: composer
+    volumes:
+      - "./:/app"
+    working_dir: /app
+    command: "composer install"
   app:
     image: php:alpine
     volumes:
       - "./:/app"
     working_dir: /app
-    command: "php artisan serve --host=0.0.0.0 --port=8000"
     ports:
       - 8000:8000
     build:
       context: docker/php
-      dockerfile: dev.Dockerfile  
+      dockerfile: dev.Dockerfile
+    depends_on:
+      - composer  
+    command: sh -c "cp .env.example .env && 
+             php artisan key:generate &&
+             php artisan serve --host=0.0.0.0 --port=8000"
   db:
     image: mariadb
     environment:
