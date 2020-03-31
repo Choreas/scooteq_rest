@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Location;
 use Illuminate\Http\Request;
+use App\Http\Resources\Location as LocationResource;
 
 class LocationController extends Controller
 {
@@ -25,7 +26,8 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $location = Location::create($this->validateData());
+        return ($location);
     }
 
     /**
@@ -48,7 +50,9 @@ class LocationController extends Controller
      */
     public function update(Request $request, Location $location)
     {
-        //
+        Location::findOrFail($location['id'])->fill($this->validateDataUpdate())->save();
+        $new = Location::findOrFail($location['id']);
+        return ($new);
     }
 
     /**
@@ -59,6 +63,31 @@ class LocationController extends Controller
      */
     public function destroy(Location $location)
     {
-        //
+        $location->delete();
+        return "Record deleted.";
+    }
+
+    private function validateData(Location $location=NULL)
+    {
+        return request()->validate([
+            'CountryCode' => 'required',
+            'Description' => 'nullable',
+            'Phone' => 'nullable',
+            'PostalCode' => 'required',
+            'City' => 'required',
+            'Address' => 'required',
+        ]);
+    }
+
+    private function validateDataUpdate(Location $location=NULL)
+    {
+        return request()->validate([
+            'CountryCode' => 'nullable',
+            'Description' => 'nullable',
+            'Phone' => 'nullable',
+            'PostalCode' => 'nullable',
+            'City' => 'nullable',
+            'Address' => 'nullable',
+        ]);
     }
 }

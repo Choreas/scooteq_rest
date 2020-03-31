@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use Illuminate\Http\Request;
+use App\Http\Resources\Customer as CustomerResource;
 
 class CustomerController extends Controller
 {
@@ -25,7 +26,8 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $customer = Customer::create($this->validateData());
+        return ($customer);
     }
 
     /**
@@ -48,7 +50,9 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
-        //
+        Customer::findOrFail($customer['id'])->fill($this->validateDataUpdate())->save();
+        $new = Customer::findOrFail($customer['id']);
+        return ($new);
     }
 
     /**
@@ -59,6 +63,31 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        //
+        $customer->delete();
+        return "Record deleted.";
+    }
+
+    private function validateData(Customer $customer=NULL)
+    {
+        return request()->validate([
+            'CountryCode' => 'required',
+            'Name' => 'required',
+            'FirstName' => 'required',
+            'PostalCode' => 'required',
+            'City' => 'required',
+            'Address' => 'required',
+        ]);
+    }
+
+    private function validateDataUpdate(Customer $customer=NULL)
+    {
+        return request()->validate([
+            'CountryCode' => 'nullable',
+            'Name' => 'nullable',
+            'FirstName' => 'nullable',
+            'PostalCode' => 'nullable',
+            'City' => 'nullable',
+            'Address' => 'nullable',
+        ]);
     }
 }

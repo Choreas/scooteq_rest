@@ -25,7 +25,8 @@ class SeatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $seat = Seat::create($this->validateData());
+        return ($seat);
     }
 
     /**
@@ -48,7 +49,9 @@ class SeatController extends Controller
      */
     public function update(Request $request, Seat $seat)
     {
-        //
+        Seat::findOrFail($seat['id'])->fill($this->validateDataUpdate())->save();
+        $new = Seat::findOrFail($seat['id']);
+        return ($new);
     }
 
     /**
@@ -59,6 +62,21 @@ class SeatController extends Controller
      */
     public function destroy(Seat $seat)
     {
-        //
+        $seat->delete();
+        return "Record deleted.";
+    }
+
+    private function validateData(Seat $seat=NULL)
+    {
+        return request()->validate([
+            'description' => 'required',
+        ]);
+    }
+
+    private function validateDataUpdate(Seat $seat=NULL)
+    {
+        return request()->validate([
+            'description' => 'required',
+        ]);
     }
 }

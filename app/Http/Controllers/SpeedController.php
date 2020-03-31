@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Speed;
 use Illuminate\Http\Request;
+use App\Http\Resources\Speed as SpeedResource;
 
 class SpeedController extends Controller
 {
@@ -25,7 +26,8 @@ class SpeedController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $speed = Speed::create($this->validateData());
+        return ($speed);
     }
 
     /**
@@ -48,7 +50,9 @@ class SpeedController extends Controller
      */
     public function update(Request $request, Speed $speed)
     {
-        //
+        Speed::findOrFail($speed['id'])->fill($this->validateDataUpdate())->save();
+        $new = Speed::findOrFail($speed['id']);
+        return ($new);
     }
 
     /**
@@ -59,6 +63,21 @@ class SpeedController extends Controller
      */
     public function destroy(Speed $speed)
     {
-        //
+        $speed->delete();
+        return "Record deleted.";
+    }
+
+    private function validateData(Speed $speed=NULL)
+    {
+        return request()->validate([
+            'description' => 'required',
+        ]);
+    }
+
+    private function validateDataUpdate(Speed $speed=NULL)
+    {
+        return request()->validate([
+            'description' => 'required',
+        ]);
     }
 }

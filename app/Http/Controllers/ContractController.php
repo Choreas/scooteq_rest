@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contract;
 use Illuminate\Http\Request;
+use App\Http\Resources\Contract as ContractResource;
 
 class ContractController extends Controller
 {
@@ -25,7 +26,8 @@ class ContractController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $contract = Contract::create($this->validateData());
+        return ($contract);
     }
 
     /**
@@ -48,7 +50,9 @@ class ContractController extends Controller
      */
     public function update(Request $request, Contract $contract)
     {
-        //
+        Contract::findOrFail($contract['id'])->fill($this->validateDataUpdate())->save();
+        $new = Contract::findOrFail($contract['id']);
+        return ($new);
     }
 
     /**
@@ -59,6 +63,25 @@ class ContractController extends Controller
      */
     public function destroy(Contract $contract)
     {
-        //
+        $contract->delete();
+        return "Record deleted.";
+    }
+
+    private function validateData(Contract $contract=NULL)
+    {
+        return request()->validate([
+            'CustomerId' => 'required',
+            'ScooterId' => 'required',
+            'LocationId' => 'required',
+            'Rented' => 'required|date',
+            'Returned' => 'nullable|date',
+        ]);
+    }
+
+    private function validateDataUpdate(Contract $contract=NULL)
+    {
+        return request()->validate([
+            'Returned' => 'required|date',
+        ]);
     }
 }

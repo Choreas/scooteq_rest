@@ -25,7 +25,8 @@ class BatteryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $battery = Battery::create($this->validateData());
+        return ($battery);
     }
 
     /**
@@ -48,7 +49,9 @@ class BatteryController extends Controller
      */
     public function update(Request $request, Battery $battery)
     {
-        //
+        Battery::findOrFail($battery['id'])->fill($this->validateDataUpdate())->save();
+        $new = Battery::findOrFail($battery['id']);
+        return ($new);
     }
 
     /**
@@ -59,6 +62,21 @@ class BatteryController extends Controller
      */
     public function destroy(Battery $battery)
     {
-        //
+        $battery->delete();
+        return "Record deleted.";
+    }
+
+    private function validateData(Battery $battery=NULL)
+    {
+        return request()->validate([
+            'description' => 'required',
+        ]);
+    }
+
+    private function validateDataUpdate(Battery $battery=NULL)
+    {
+        return request()->validate([
+            'description' => 'required',
+        ]);
     }
 }
