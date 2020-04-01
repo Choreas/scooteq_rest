@@ -1,6 +1,8 @@
 [API documentation](https://documenter.getpostman.com/view/10927287/SzYZ2KQo "API documentation (Postman)")
 [Postman Collection](https://www.getpostman.com/collections/f39a77a339df981e1a89 "Import this into postman")
 
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/f39a77a339df981e1a89)
+
 To make things more interesting while learning how to work with rest apis, this a simple rest backend
 you can alter however you like. I tried to stuff it into a container so nobody needs to have
 a database or other dependencies installed and running. I hope it works as expected on every machine.
@@ -19,8 +21,8 @@ installed everything
 3. Press ctrl+c and wait until services stopped
 4. Again: docker-compose up
 5. You can run migrateDatabase.bat to migrate all tables into the scooteq db.
+   (May take up to two minutes)
    This can be repeated whenever table migrations have been changed.
-   NOTE: if you get duplicate key errors, run it again. This could happen once in a while^^
    
 It should be up and running now. You can access the webapp at localhost:8000
 from your host machine.
