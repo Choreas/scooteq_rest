@@ -2,6 +2,7 @@
 
 use Brick\Math\BigInteger;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class PricegroupTableSeeder extends Seeder
 {
