@@ -26,8 +26,8 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        $country = Country::create($this->validateData());
-        return ($country);
+        // $country = Country::create($this->validateData());
+        // return ($country);
     }
 
     /**
@@ -38,7 +38,7 @@ class CountryController extends Controller
      */
     public function show(Country $country)
     {
-        return $country;
+        // return $country;
     }
 
     /**
@@ -50,9 +50,9 @@ class CountryController extends Controller
      */
     public function update(Request $request, Country $country)
     {
-        Country::findOrFail($country['id'])->fill($this->validateDataUpdate())->save();
-        $new = Country::findOrFail($country['id']);
-        return ($new);
+        // Country::findOrFail($country['id'])->fill($this->validateDataUpdate())->save();
+        // $new = Country::findOrFail($country['id']);
+        // return ($new);
     }
 
     /**
@@ -63,8 +63,8 @@ class CountryController extends Controller
      */
     public function destroy(Country $country)
     {
-        $country->delete();
-        return "Record deleted.";
+        // $country->delete();
+        // return "Record deleted.";
     }
 
     private function validateData(Country $country=NULL)
