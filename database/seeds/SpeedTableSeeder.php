@@ -11,6 +11,6 @@ class SpeedTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Speed::class, 3)->create();
+        factory(App\Speed::class, 10)->create();
     }
 }

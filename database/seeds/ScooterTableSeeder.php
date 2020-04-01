@@ -11,6 +11,6 @@ class ScooterTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Scooter::class, 1000)->create();
+        factory(App\Scooter::class, 100)->create();
     }
 }

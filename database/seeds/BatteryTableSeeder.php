@@ -11,6 +11,6 @@ class BatteryTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Battery::class, 3)->create();
+        factory(App\Battery::class, 10)->create();
     }
 }

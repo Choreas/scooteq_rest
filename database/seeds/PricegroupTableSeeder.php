@@ -1,5 +1,8 @@
 <?php
 
+use App\Battery;
+use App\Seat;
+use App\Speed;
 use Brick\Math\BigInteger;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -13,15 +16,19 @@ class PricegroupTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 1; $i <= 3; $i++) {
-            for ($ii = 1; $ii <= 3; $ii++){
-                for ($iii = 1; $iii <= 3; $iii++){
+        $batteries = Battery::all();
+        $seats = Seat::all();
+        $speeds = Speed::all();
 
+        foreach ($batteries as $battery) {
+            foreach ($seats as $seat){
+                foreach ($speeds as $speed){
                     DB::table('pricegroups')->insert([
-                    'BatteryId' => $i,
-                    'SeatId' => $ii,
-                    'SpeedId' => $iii,
-                    'Price' => $i + $ii + $iii,
+                    'BatteryId' => $battery['id'],
+                    'SeatId' => $seat['id'],
+                    'SpeedId' => $speed['id'],
+                    'Price' => $battery['id'] + $seat['id'] + $speed['id'],
+                    'created_at' => now(),
                     ]);
                 }
             }

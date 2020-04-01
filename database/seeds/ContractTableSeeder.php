@@ -11,6 +11,6 @@ class ContractTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Contract::class, 100)->create();
+        factory(App\Contract::class, 2000)->create();
     }
 }

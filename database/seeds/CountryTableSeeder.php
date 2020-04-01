@@ -17,6 +17,7 @@ class CountryTableSeeder extends Seeder
             DB::table('countries')->insert([
                 'Code' => substr($country, 0, 2),
                 'Country' => substr($country, 3),
+                'created_at' => now(),
                 ]);
         }
     }
