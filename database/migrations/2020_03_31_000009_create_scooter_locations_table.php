@@ -14,14 +14,14 @@ class CreateScooterLocationsTable extends Migration
     public function up()
     {
         Schema::create('scooter_locations', function (Blueprint $table) {
-            $table->bigInteger('ScooterId')->unsigned();
             $table->bigInteger('LocationId')->unsigned();
+            $table->bigInteger('ScooterId')->unsigned();
             $table->foreign('ScooterId')->references('id')->on('scooters');
             $table->foreign('LocationId')->references('id')->on('locations');
             $table->integer('Pieces');
             $table->timestamps();
 
-            $table->primary(array('ScooterId', 'LocationId'));
+            $table->primary(array('LocationId', 'ScooterId'));
         });
     }
 
