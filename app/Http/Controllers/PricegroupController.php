@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Pricegroup;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PricegroupController extends Controller
 {
@@ -12,8 +13,17 @@ class PricegroupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $params = $this->validateDataFetch();
+        if (key_exists('batteryId', $params)){
+            $pricegroup = Pricegroup::where([
+                ['BatteryId', '=', $params['batteryId']],
+                ['SeatId', '=', $params['seatId']],
+                ['SpeedId', '=', $params['speedId']],
+            ])->first();
+            return $pricegroup;
+        }
         return Pricegroup::all();
     }
 
@@ -25,7 +35,8 @@ class PricegroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pricegroup = Pricegroup::create($this->validateDataUpdate());
+        return ($pricegroup);
     }
 
     /**
@@ -36,7 +47,7 @@ class PricegroupController extends Controller
      */
     public function show(Pricegroup $pricegroup)
     {
-        return $pricegroup;
+        // return $pricegroup;
     }
 
     /**
@@ -48,7 +59,19 @@ class PricegroupController extends Controller
      */
     public function update(Request $request, Pricegroup $pricegroup)
     {
-        //
+        $params = $this->validateDataUpdate();
+        DB::table('pricegroups')->where([
+            ['BatteryId', '=', $params['batteryId']],
+            ['SeatId', '=', $params['seatId']],
+            ['SpeedId', '=', $params['speedId']],
+        ])
+            ->update(['Price' => $params['price']]);
+        $new = Pricegroup::where([
+            ['BatteryId', '=', $params['batteryId']],
+            ['SeatId', '=', $params['seatId']],
+            ['SpeedId', '=', $params['speedId']],
+        ])->first();
+        return ($new);
     }
 
     /**
@@ -57,8 +80,47 @@ class PricegroupController extends Controller
      * @param  \App\Pricegroup  $pricegroup
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pricegroup $pricegroup)
+    public function destroy()
     {
-        //
+        $params = $this->validateDataFetch();
+        // $pricegroup = Pricegroup::where([
+        //     ['BatteryId', '=', $params['batteryId']],
+        //     ['SeatId', '=', $params['seatId']],
+        //     ['SpeedId', '=', $params['speedId']],
+        // ])->first();
+        DB::table('pricegroups')->where([
+            ['BatteryId', '=', $params['batteryId']],
+            ['SeatId', '=', $params['seatId']],
+            ['SpeedId', '=', $params['speedId']],
+        ])->delete();
+        return "Record deleted.";
+    }
+
+    private function validateData(Pricegroup $pricegroup=NULL)
+    {
+        return request()->validate([           
+            'batteryId' => 'required|integer',
+            'seatId' => 'required|integer',
+            'speedId' => 'required|integer',
+        ]);
+    }
+
+    private function validateDataFetch(Pricegroup $pricegroup=NULL)
+    {
+        return request()->validate([
+            'batteryId' => 'required_with:seatId,speedId|integer',
+            'seatId' => 'required_with:speedId,batteryId|integer',
+            'speedId' => 'required_with:batteryId,seatId|integer',
+        ]);
+    }
+
+    private function validateDataUpdate(Pricegroup $pricegroup=NULL)
+    {
+        return request()->validate([
+            'batteryId' => 'required|integer',
+            'seatId' => 'required|integer',
+            'speedId' => 'required|integer',
+            'price' => 'required|numeric',
+        ]);
     }
 }

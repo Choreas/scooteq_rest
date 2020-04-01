@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Country;
 use Illuminate\Http\Request;
-use App\Http\Resources\Country as CountryResource;
+use Illuminate\Support\Facades\DB;
 
 class CountryController extends Controller
 {
@@ -13,8 +13,13 @@ class CountryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $params = $this->validateDataFetch();
+        if (key_exists('code', $params)){
+            $country = Country::where('Code', $params['code'])->first();
+            return $country;
+        }
         return Country::all();
     }
 
@@ -26,8 +31,8 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        // $country = Country::create($this->validateData());
-        // return ($country);
+        $country = Country::create($this->validateData());
+        return ($country);
     }
 
     /**
@@ -50,9 +55,11 @@ class CountryController extends Controller
      */
     public function update(Request $request, Country $country)
     {
-        // Country::findOrFail($country['id'])->fill($this->validateDataUpdate())->save();
-        // $new = Country::findOrFail($country['id']);
-        // return ($new);
+        $params = $this->validateDataUpdate();
+        DB::table('countries')->where('Code', $params['code'])
+            ->update(['Country' => $params['country']]);
+        $new = Country::where('Code', $params['code'])->first();
+        return ($new);
     }
 
     /**
@@ -61,23 +68,36 @@ class CountryController extends Controller
      * @param  \App\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Country $country)
+    public function destroy()
     {
-        // $country->delete();
-        // return "Record deleted.";
+        $params = $this->validateDataFetch();
+        // $country = Country::where('Code', $params['code'])->first();
+        DB::table('countries')->where('Code', $params['code'])
+                     ->delete();
+        return "Record deleted.";
     }
 
     private function validateData(Country $country=NULL)
     {
         return request()->validate([
-            'description' => 'required',
+            'code' => 'required|string|size:2',
+            'description' => 'nullable|string',
+        ]);
+    }
+
+    private function validateDataFetch(Country $country=NULL)
+    {
+        return request()->validate([
+            'code' => 'nullable|string|size:2',
+            'country' => 'nullable|string',
         ]);
     }
 
     private function validateDataUpdate(Country $country=NULL)
     {
         return request()->validate([
-            'description' => 'required',
+            'code' => 'required|string|size:2',
+            'country' => 'required|string',
         ]);
     }
 }
