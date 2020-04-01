@@ -19,8 +19,8 @@ installed everything
 3. Press ctrl+c and wait until services stopped
 4. Again: docker-compose up
 5. You can run migrateDatabase.bat to migrate all tables into the scooteq db.
+   (May take up to two minutes)
    This can be repeated whenever table migrations have been changed.
-   NOTE: if you get duplicate key errors, run it again. This could happen once in a while^^
    
 It should be up and running now. You can access the webapp at localhost:8000
 from your host machine.
