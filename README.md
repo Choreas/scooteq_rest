@@ -1,6 +1,8 @@
 [API documentation](https://documenter.getpostman.com/view/10927287/SzYZ2KQo "API documentation (Postman)")
 [Postman Collection](https://www.getpostman.com/collections/f39a77a339df981e1a89 "Import this into postman")
 
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/f39a77a339df981e1a89)
+
 To make things more interesting while learning how to work with rest apis, this a simple rest backend
 you can alter however you like. I tried to stuff it into a container so nobody needs to have
 a database or other dependencies installed and running. I hope it works as expected on every machine.
