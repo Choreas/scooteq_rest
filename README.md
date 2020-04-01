@@ -1,4 +1,4 @@
-[API documentation](https://www.getpostman.com/collections/f39a77a339df981e1a89 "API documentation (Postman)")
+[API documentation (You can import this as an collection into postman)](https://www.getpostman.com/collections/f39a77a339df981e1a89 "API documentation (Postman)")
 
 To make things more interesting while learning how to work with rest apis, this a simple rest backend
 you can alter however you like. I tried to stuff it into a container so nobody needs to have
