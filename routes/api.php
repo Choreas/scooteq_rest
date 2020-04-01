@@ -17,6 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::delete('/country','CountryController@destroy');
+Route::put('/country','CountryController@update');
+Route::delete('/pricegroup','PricegroupController@destroy');
+Route::put('/pricegroup','PricegroupController@update');
+Route::delete('/scooterlocation','ScooterLocationController@destroy');
+Route::put('/scooterlocation','ScooterLocationController@update');
+
 Route::apiResources([
     'battery' => 'BatteryController',
     'contract' => 'ContractController',
