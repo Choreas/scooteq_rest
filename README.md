@@ -21,7 +21,7 @@ command: docker-compose up
 installed everything
 3. Press ctrl+c and wait until services stopped
 4. Again: docker-compose up
-5. You can run migrateDatabase.bat to migrate all tables into the scooteq db.
+5. You can run openme/migrateDatabase.bat to migrate all tables into the scooteq db.
    (May take up to two minutes)
    This can be repeated whenever table migrations have been changed.
 
