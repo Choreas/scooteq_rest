@@ -23,17 +23,21 @@ installed everything
 5. You can run migrateDatabase.bat to migrate all tables into the scooteq db.
    (May take up to two minutes)
    This can be repeated whenever table migrations have been changed.
-   
-It should be up and running now. You can access the webapp at localhost:8000
-from your host machine.
-You can access the api at localhost:8000/api/ from your host machine
-You can access the database at localhost:3306 from your host machine
+
+It should be up and running now. This table shows you where the services are
+reachable from your host machine:
+
+| Service       | Access (from Host)  |
+| ------------- |---------------------|
+| Webapp        | localhost:8000      |
+| API           | localhost:8000/api  |
+| Database      | localhost:3306      |
 
 This environment uses laravel, it has a pretty good documentation. Building a
 rest api backend with it is easy once you got the hang of it. But you can just use this container to 
 play with the existing api (e.g. using postman). 
 Martin should be able to tell you pretty much anything about laravel btw ;)
 
-Please see the api documentation in openme folder for details about available parameters
-and check the database diagram for information about the database entities.
+Please see the api documentation for details about available parameters
+and check the database diagram (openme folder) for information about the database entities.
 If there are problems, see if the openme folder can help you solving them.
