@@ -10,7 +10,7 @@ $factory->define(Customer::class, function (Faker $faker) {
         'CountryCode' => \App\Country::all()->random()->Code,
         'PostalCode' => $faker->postcode,
         'City' => $faker->city,
-        'Name' => $faker->name,
+        'Name' => $faker->lastName,
         'FirstName' => $faker->firstName,
         'Address' => $faker->streetAddress,
     ];
