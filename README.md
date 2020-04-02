@@ -19,7 +19,7 @@ NOTE: On linux there will be files created which you cannot delete without root 
 2. It will partly fail at first. This is expected, now wait until composer has
 installed everything
 3. Press ctrl+c and wait until services stopped
-4. Again: docker-compose up
+4. Again: docker-compose up. Keep the console window open for as long as you are using the service.
 5. You can run openme/migrateDatabase.bat to migrate all tables into the scooteq db.
    (May take up to two minutes)
    This can be repeated whenever table migrations have been changed.
