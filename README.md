@@ -17,7 +17,7 @@ NOTE: On linux there will be files created which you cannot delete without root 
 
 1. Go to root directory of this repository, that is the main folder where docker-compose.yml is located, after you cloned it your computer. Open a console window (on windows: search for "cmd") and navigate to this directory. If you are unsure how to navigate, look up the "cd" command. Now issue the following command: docker-compose up
 2. It will partly fail at first. This is expected, now wait until composer has
-installed everything
+installed everything, which might take up to five minutes. Don't worry, this only happens at this first start.
 3. Press ctrl+c and wait until services stopped
 4. Again: docker-compose up. Keep the console window open for as long as you are using the service.
 5. You can run openme/migrateDatabase.bat to migrate all tables into the scooteq db.
