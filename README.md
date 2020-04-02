@@ -1,5 +1,4 @@
 [API documentation](https://documenter.getpostman.com/view/10927287/SzYZ2KQo "API documentation (Postman)")
-[Postman Collection](https://www.getpostman.com/collections/f39a77a339df981e1a89 "Import this into postman")
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/f39a77a339df981e1a89)
 
@@ -27,11 +26,13 @@ installed everything
 It should be up and running now. This table shows you where the services are
 reachable from your host machine:
 
-| Service       | Access (from Host)  |
-| ------------- |---------------------|
-| Webapp        | localhost:8000      |
-| API           | localhost:8000/api  |
-| Database      | localhost:3306      |
+| Service       | Access (from Host)  |  Credentials   |
+| ------------- |---------------------|----------------|
+| Webapp        | localhost:8000      |                |
+| API           | localhost:8000/api  |                |
+| Database      | localhost:3306      | root / no pass |
+
+<a href="OPENME/ERD_31032020.PNG"><img src="https://github.com/Choreas/scooteq_rest/blob/master/OPENME/ERD_31032020.PNG" align="left" height="150" width="150" ></a>
 
 This environment uses laravel, it has a pretty good documentation. Building a
 rest api backend with it is easy once you got the hang of it. But you can just use this container to 
