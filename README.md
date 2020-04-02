@@ -35,8 +35,8 @@ reachable from your host machine:
 | API           | localhost:8000/api  |                |
 | Database      | localhost:3306      | root / no pass 
 
-### Database
-This diagram contains all information about the underlying database. 
+### Database Diagram
+<a href="OPENME/ERD_31032020.PNG"><img src="https://github.com/Choreas/scooteq_rest/blob/master/OPENME/ERD_31032020.PNG" align="center" height="150" width="150" ></a>
 
 ### API
 The API is well documented via postman. Follow this [link](https://documenter.getpostman.com/view/10927287/SzYZ2KQo "API documentation")
