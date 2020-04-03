@@ -60,7 +60,7 @@ to see the documentation and click "Run in Postman" to import the entire collect
 This environment uses laravel, it has a pretty good documentation. Building a
 rest api backend with it is easy once you got the hang of it. But you can just use this container to 
 play with the existing api (e.g. using postman). 
-Martin should be able to tell you pretty much anything about laravel btw ;)
+Martin should be able to tell you pretty much anything about laravel btw. ;)
 
 ## Intentions & Contributions
 The API is intended as a base for our first steps regarding REST-APIs. This means that it can and should be changed in any way you think
