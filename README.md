@@ -43,7 +43,7 @@ For any problems, please look inside the openme/ folder or feel free to ask on g
 It should be up and running now. This table shows you where the services are
 reachable from your host machine:
 
-| Service              | Access (from Host)  |  Credentials   |
+| Service              | Access (from host)  |  Credentials   |
 | -------------------- |---------------------|----------------|
 | Webapp               | localhost:8000      |                |
 | API Server           | localhost:8000/api  |                |
