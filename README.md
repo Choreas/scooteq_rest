@@ -15,7 +15,8 @@ You have to install docker and in case you use linux you might need to install
 docker-compose, but it comes bundled with the windows 10 version of docker.
 NOTE: On linux there will be files created which you cannot delete without root access.
 1. **Get [docker](https://hub.docker.com/editions/community/docker-ce-desktop-windows "Docker for Win 10 Pro").**
-    - Get docker-compose (only on linux, because it comes bundled with the windows 10 version of docker)
+    - For Windows: Don't enable the "use windows containers" setting during installation.
+    - Only on linux: Get docker-compose (it comes bundled with the windows 10 version of docker)
     - If you are using Windows, but not Windows 10 Professional, you will need [docker toolbox](https://github.com/docker/toolbox "docker toolbox") instead.
 2. **Clone** this repository to your computer and **bring up the docker container**.
     - Find "Start.bat" and run it.
