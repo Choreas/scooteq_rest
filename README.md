@@ -10,29 +10,43 @@ a database or other dependencies installed and running. I hope it works as expec
 You shouldn't need anything besides docker installed. My environment has php installed, but in case
 I did it right it should come with the container.
 
-## Steps
+## Steps - First Start
 You have to install docker and in case you use linux you might need to install
 docker-compose, but it comes bundled with the windows 10 version of docker.
 NOTE: On linux there will be files created which you cannot delete without root access.
+1. **Get docker.**
+    - Get docker-compose (only on linux, because it comes bundled with the windows 10 version of docker)
+    - If you are using Windows, but not Windows 10 Professional, you will need [docker toolbox](https://github.com/docker/toolbox "docker toolbox") instead.
+2. **Clone** this repository to your computer and **bring up the docker container**.
+    - Find "Start.bat" and run it.
+3. **Wait** for the operations to complete. *{1 to 5 minutes}*
+    - This will only happen at this first start.
+    - Make sure composer has finished and exited before proceeding.
+4. **Stop the program.**
+    - Try ctrl+c or simply close the console window.
+5. **Bring it up again.**
+    - Run Start.bat again.
+    - You must not close the console window, you will shut down all services by closing it.
+6. **Migrate the database.** *{1 to 3 minutes}*
+    - run openme/migrateDatabase.bat.
+    - This will take its time and you should see quite some messages about tables and seeds.
+        - ***If you get an exception** instead, telling you the database doesn't exist, follow these steps.*
+        - *Access the database server (e.g. from HeidiSQL) using the information from the table below.*
+        - *Create a database called "scooteq" on the server.*
+        - *Run migrateDatabase.bat again.*
 
-1. Go to root directory of this repository, that is the main folder where docker-compose.yml is located, after you cloned it your computer. Open a console window (on windows: search for "cmd") and navigate to this directory. If you are unsure how to navigate, look up the "cd" command. Now issue the following command: docker-compose up
-2. It will partly fail at first. This is expected, now wait until composer has
-installed everything, which might take up to five minutes. Don't worry, this only happens at this first start.
-3. Press ctrl+c and wait until services stopped
-4. Again: docker-compose up. Keep the console window open for as long as you are using the service.
-5. You can run openme/migrateDatabase.bat to migrate all tables into the scooteq db.
-   (May take up to two minutes)
-   This can be repeated whenever table migrations have been changed.
+**Finished!** All subsequent starts are simply performed by running Start.bat.
+For any problems, please look inside the openme/ folder or feel free to ask on github.
 
 ## Details
 It should be up and running now. This table shows you where the services are
 reachable from your host machine:
 
-| Service       | Access (from Host)  |  Credentials   |
-| ------------- |---------------------|----------------|
-| Webapp        | localhost:8000      |                |
-| API           | localhost:8000/api  |                |
-| Database      | localhost:3306      | root / no pass 
+| Service              | Access (from Host)  |  Credentials   |
+| -------------------- |---------------------|----------------|
+| Webapp               | localhost:8000      |                |
+| API Server           | localhost:8000/api  |                |
+| Database Server      | localhost:3306      | root / no pass |
 
 ### Database Diagram
 <a href="OPENME/ERD_31032020.PNG"><img src="https://github.com/Choreas/scooteq_rest/blob/master/OPENME/ERD_31032020.PNG" align="center" height="150" width="150" ></a>
