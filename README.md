@@ -7,7 +7,7 @@ To make things more interesting while learning how to work with rest apis, this 
 you can alter however you like. I tried to stuff it into a container so nobody needs to have
 a database or other dependencies installed and running. I hope it works as expected on every machine.
 
-The container has proved to run on systems lacking even php, so you should be fine without it.
+The container has proven to run on systems lacking even php, so you should be fine without it.
 
 ## Steps - First Start
 You have to install docker and in case you use linux you might need to install
